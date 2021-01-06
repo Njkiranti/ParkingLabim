@@ -70,7 +70,7 @@ namespace ParkingManagement.ViewModel
         public RelayCommand LoadData2 { get; set; }
 
         #endregion
-
+                                                           
         public CashReceiptViewModel()
         {
             try

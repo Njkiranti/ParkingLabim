@@ -81,13 +81,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\BarcodeLib.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\BarcodeLib.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="ExtendedComboBox">
-      <HintPath>..\..\..\UpdatePackage\ExtendedComboBox.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\ExtendedComboBox.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,7 +95,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Microsoft.Windows.Shell.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\Library DLLs\Newtonsoft.Json.dll</HintPath>
@@ -106,38 +106,32 @@
       <HintPath>..\packages\QRCoder.1.3.5\lib\net40\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="RawPrintFunctions">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\RawPrintFunctions.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\RawPrintFunctions.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
-    <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.Compression.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.Core">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.Core.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.Core.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Data.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.Data.WPF.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.Data.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PdfViewer.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.PdfViewer.WPF.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.PdfViewer.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfGrid.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.SfGrid.WPF.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.SfGrid.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfGridConverter.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.SfGridConverter.WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfInput.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.SfInput.WPF.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.SfGridConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.WPF">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.Shared.WPF.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.Shared.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\IMS - Ticketing Software\ParkingManagement\bin\x86\Debug\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Syncfusion\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -165,19 +159,19 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFCustomToolKit">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\WPFCustomToolKit.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\WPFCustomToolKit.dll</HintPath>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
     </Reference>
     <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Xceed.Wpf.Toolkit.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Zen.Barcode">
-      <HintPath>..\..\..\..\Users\Amir\Desktop\bishaka Programming\Library\Zen.Barcode.dll</HintPath>
+      <HintPath>E:\My Files\IMS\Library\Zen.Barcode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -174,7 +174,20 @@ namespace ParkingManagement.ViewModel
             try
             {
                 MessageBoxCaption = "Exit";
-                TaxInvoice = false;
+                if (GlobalClass.TaxInvoice == 1)
+                {
+                    TaxInvoice = true;
+                }
+                else if (GlobalClass.TaxInvoice == 0)
+                {
+                    TaxInvoice = false;
+                }
+                else if
+                    (GlobalClass.TaxInvoice == 2)
+                        {
+                    TaxInvoice = false;
+                }
+
                 CanChangeInvoiceType = true;
                 nepDate = new DateConverter(GlobalClass.TConnectionString);
                 PIN = new ParkingIn();
@@ -197,6 +210,8 @@ namespace ParkingManagement.ViewModel
                 SaveWithStaffCommand = new RelayCommand(SaveWithStaff);
                 POUT.PropertyChanged += POUT_PropertyChanged;
                 SetAction(ButtonAction.Init);
+
+              
             }
             catch (Exception ex)
             {
@@ -383,12 +398,13 @@ namespace ParkingManagement.ViewModel
         private void ExecutePrint(object obj)
         {
             try
-            {
+            {   
                 using (SqlConnection conn = new SqlConnection(GlobalClass.TConnectionString))
+                   
                 {
                     string BillNo = InvoicePrefix + InvoiceNo;
                     string DuplicateCaption = GlobalClass.GetReprintCaption(BillNo);
-                    PrintBill(BillNo, conn, (TaxInvoice) ? "INVOICE" : "ABBREVIATED TAX INVOCE", DuplicateCaption);
+                    PrintBill(BillNo, conn, (TaxInvoice) ? " TAX INVOICE" : "ABBREVIATED TAX INVOICE"  , DuplicateCaption); ;
                     GlobalClass.SavePrintLog(BillNo, null, DuplicateCaption);
                     GlobalClass.SetUserActivityLog("Exit", "Re-Print", WorkDetail: string.Empty, VCRHNO: BillNo, Remarks: "Reprinted : " + DuplicateCaption);
                 }
@@ -402,7 +418,7 @@ namespace ParkingManagement.ViewModel
 
         private bool CanExecuteSave(object obj)
         {
-            return _action == ButtonAction.Selected && !TaxInvoice;
+            return true;
         }
         private void CalculateAmount()
         {
@@ -451,8 +467,8 @@ namespace ParkingManagement.ViewModel
                     }
 
                     var PINS = conn.Query<ParkingIn>(string.Format(@"SELECT PID, VehicleType, InDate, InMiti, InTime, PlateNo, Barcode, UID FROM ParkingInDetails 
-WHERE((BARCODE <> '' AND  BARCODE = '{0}') OR(ISNULL(PLATENO, '') <> '' AND ISNULL(PlateNo, '') = '{0}'))
-AND FYID = {1} ORDER BY PID DESC", obj, GlobalClass.FYID));
+                                 WHERE((BARCODE <> '' AND  BARCODE = '{0}') OR(ISNULL(PLATENO, '') <> '' AND ISNULL(PlateNo, '') = '{0}'))
+                                       AND FYID = {1} ORDER BY PID DESC", obj, GlobalClass.FYID));
                     if (PINS.Count() <= 0)
                     {
                         MessageBox.Show("Invalid barcode readings.", MessageBoxCaption, MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -485,7 +501,19 @@ AND FYID = {1} ORDER BY PID DESC", obj, GlobalClass.FYID));
                     SetAction(ButtonAction.Selected);
                     if (POUT.CashAmount > GlobalClass.AbbTaxInvoiceLimit)
                     {
-                        TaxInvoice = true;
+                        if (GlobalClass.TaxInvoice == 1)
+                        {
+                            TaxInvoice = true;
+                        }
+                        else if (GlobalClass.TaxInvoice == 0)
+                        {
+                            TaxInvoice = false;
+                        }
+                        else if
+                            (GlobalClass.TaxInvoice == 2)
+                        {
+                            TaxInvoice = false;
+                        }
                         CanChangeInvoiceType = false;
                     }
                     else
@@ -858,10 +886,10 @@ AND FYID = {1} ORDER BY PID DESC", obj, GlobalClass.FYID));
                     if (!string.IsNullOrEmpty(BillNo))
                     {
                         RawPrinterHelper.SendStringToPrinter(GlobalClass.PrinterName, ((char)27).ToString() + ((char)112).ToString() + ((char)0).ToString() + ((char)64).ToString() + ((char)240).ToString(), "Receipt");   //Open Cash Drawer
-                        PrintBill(BillNo.ToString(), conn, (TaxInvoice) ? "TAX INVOICE" : "ABBREVIATED TAX INVOCE");
+                        PrintBill(BillNo.ToString(), conn, (TaxInvoice) ? " TAX INVOICE" : "ABBREVIATED TAX INVOICE");
                         if (TaxInvoice)
                         {
-                            PrintBill(BillNo.ToString(), conn, "INVOICE");
+                            PrintBill(BillNo.ToString(), conn, " TAX INVOICE");
                         }
                     }
                     SetAction(ButtonAction.Init);
@@ -886,8 +914,20 @@ AND FYID = {1} ORDER BY PID DESC", obj, GlobalClass.FYID));
                 }
             }
             FocusedElement = (short)Focusable.Barcode;
-            TaxInvoice = false;
-            CanChangeInvoiceType = true;
+            if (GlobalClass.TaxInvoice == 1)
+            {
+                TaxInvoice = true;
+            }
+            else if (GlobalClass.TaxInvoice == 0)
+            {
+                TaxInvoice = false;
+            }
+            else if
+                (GlobalClass.TaxInvoice == 2)
+            {
+                TaxInvoice = false;
+            }
+            CanChangeInvoiceType = true ;
             PIN = new ParkingIn();
             POUT = new ParkingOut();
             POUT.PropertyChanged += POUT_PropertyChanged;

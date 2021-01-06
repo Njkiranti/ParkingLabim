@@ -39,6 +39,7 @@ namespace ParkingManagement.Library
         public static Visibility ShowCollectionAmountInCashSettlement;
         public static Visibility DisableCashAmountChange;
         public static Visibility DiscountVisible;
+        public static Visibility InvoiceVisible;
         public static Visibility StampVisible;
         public static Visibility StaffVisible;
         public static Visibility PrepaidVisible;
@@ -52,6 +53,7 @@ namespace ParkingManagement.Library
         public static byte SettlementMode;
         public static string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\IMS\\Parking";
         public static decimal AbbTaxInvoiceLimit = 5000;
+        public static int TaxInvoice;
         internal static bool NoRawPrinter;
 
         public static string ReportName { get; set; }
@@ -86,7 +88,7 @@ namespace ParkingManagement.Library
                                 ISNULL(ShowCollectionAmountInCashSettlement, 0) ShowCollectionAmountInCashSettlement, ISNULL(DisableCashAmountChange,0) DisableCashAmountChange, 
                                 SettlementMode, ISNULL(AllowMultiVehicleForStaff,0) AllowMultiVehicleForStaff, ISNULL(SlipPrinterWidth, 58) SlipPrinterWidth, 
                                 ISNULL(EnableStaff, 0) EnableStaff, ISNULL(EnableStamp, 0) EnableStamp, ISNULL(EnableDiscount, 0) EnableDiscount, ISNULL(EnablePlateNo, 0) EnablePlateNo, 
-                                ISNULL(EnablePrepaid, 0) EnablePrepaid, ISNULL(PrepaidInfo, '{}') PrepaidInfo, MemberBarcodePrefix FROM tblSetting").First();
+                                ISNULL(EnablePrepaid, 0) EnablePrepaid, ISNULL(PrepaidInfo, '{}') PrepaidInfo, MemberBarcodePrefix,ISNULL(TaxInvoice, 1) TaxInvoice FROM tblSetting").First();
                     CompanyName = Setting.CompanyName;
                     CompanyAddress = Setting.CompanyAddress;
                     CompanyPan = Setting.CompanyInfo;
@@ -96,6 +98,12 @@ namespace ParkingManagement.Library
                     ShowCollectionAmountInCashSettlement = ((bool)Setting.ShowCollectionAmountInCashSettlement) ? Visibility.Visible : Visibility.Collapsed;
                     DisableCashAmountChange = ((bool)Setting.DisableCashAmountChange) ? Visibility.Collapsed : Visibility.Visible;
                     DiscountVisible = ((bool)Setting.EnableDiscount) ? Visibility.Visible : Visibility.Collapsed;
+
+
+                    // for changing INVOICE bill types
+
+                    TaxInvoice = Setting.TaxInvoice;
+                    InvoiceVisible = TaxInvoice == 2 ? Visibility.Visible : Visibility.Collapsed;
                     StaffVisible = ((bool)Setting.EnableStaff) ? Visibility.Visible : Visibility.Collapsed;
                     StampVisible = ((bool)Setting.EnableStamp) ? Visibility.Visible : Visibility.Collapsed;
                     PrepaidVisible = ((bool)Setting.EnablePrepaid) ? Visibility.Visible : Visibility.Collapsed;
@@ -420,8 +428,12 @@ CREATE TABLE DiscountScheme (SchemeId INT NOT NULL, SchemeName VARCHAR(100) NOT 
                 conn.Execute("ALTER TABLE PARKINGOUTDETAILS ALTER COLUMN OutTime VARCHAR(12) NOT NULL");
                 conn.Execute("ALTER TABLE ParkingSales ALTER COLUMN TTime VARCHAR(12) NOT NULL");
             }
+
             conn.Execute("UPDATE tblSetting SET UpdateHistory = 10");
+
+       
         }
+
 
         public static bool StartSession()
         {

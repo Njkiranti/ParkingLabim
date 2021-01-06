@@ -108,7 +108,19 @@ namespace ParkingManagement.ViewModel
             try
             {
                 MessageBoxCaption = "Exit Without Slip";
-                TaxInvoice = false;
+                if (GlobalClass.TaxInvoice == 1)
+                {
+                    TaxInvoice = true;
+                }
+                else if (GlobalClass.TaxInvoice == 0)
+                {
+                    TaxInvoice = false;
+                }
+                else if
+                    (GlobalClass.TaxInvoice == 2)
+                {
+                    TaxInvoice = false;
+                }
                 CanChangeInvoiceType = true;
                 nepDate = new DateConverter(GlobalClass.TConnectionString);
                 PIN = new ParkingIn();
@@ -161,7 +173,7 @@ namespace ParkingManagement.ViewModel
                 {
                     string BillNo = InvoicePrefix + InvoiceNo;
                     string DuplicateCaption = GlobalClass.GetReprintCaption(BillNo);
-                    POutVMTouch.PrintBill(BillNo, conn, (TaxInvoice) ? "INVOICE" : "ABBREVIATED TAX INVOCE", DuplicateCaption);
+                    POutVMTouch.PrintBill(BillNo, conn, (TaxInvoice) ? "TAX INVOICE" : "ABBREVIATED TAX INVOCE", DuplicateCaption);
                     GlobalClass.SavePrintLog(BillNo, null, DuplicateCaption);
                     GlobalClass.SetUserActivityLog("Exit", "Re-Print", WorkDetail: string.Empty, VCRHNO: BillNo, Remarks: "Reprinted : " + DuplicateCaption);
 
@@ -176,7 +188,7 @@ namespace ParkingManagement.ViewModel
 
         private bool CanExecuteSave(object obj)
         {
-            return _action == ButtonAction.New && !TaxInvoice;
+            return true;
         }
         private void ExecuteLoad(object obj)
         {
@@ -200,7 +212,19 @@ namespace ParkingManagement.ViewModel
                     POUT.CashAmount = POUT.ChargedAmount;
                     if (POUT.CashAmount > GlobalClass.AbbTaxInvoiceLimit)
                     {
-                        TaxInvoice = true;
+                        if (GlobalClass.TaxInvoice == 1)
+                        {
+                            TaxInvoice = true;
+                        }
+                        else if (GlobalClass.TaxInvoice == 0)
+                        {
+                            TaxInvoice = false;
+                        }
+                        else if
+                            (GlobalClass.TaxInvoice == 2)
+                        {
+                            TaxInvoice = false;
+                        }
                         CanChangeInvoiceType = false;
                     }
                     else
@@ -364,7 +388,19 @@ namespace ParkingManagement.ViewModel
         private void ExecuteUndo(object obj)
         {
             FocusedElement = (short)Focusable.Barcode;
-            TaxInvoice = false;
+            if (GlobalClass.TaxInvoice == 1)
+            {
+                TaxInvoice = true;
+            }
+            else if (GlobalClass.TaxInvoice == 0)
+            {
+                TaxInvoice = false;
+            }
+            else if
+                (GlobalClass.TaxInvoice == 2)
+            {
+                TaxInvoice = false;
+            }
             InvoiceNo = string.Empty;
             CanChangeInvoiceType = true;
             PIN = new ParkingIn();
